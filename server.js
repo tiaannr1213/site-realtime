@@ -7,7 +7,8 @@ const axios = require('axios'); // ⚠️ Utilisation de axios !
 const path = require('path');
 
 // ⚠️ VOTRE WEBHOOK DISCORD EST INTÉGRÉ ICI
-const DISCORD_WEBHOOK_URL = "https://discordapp.com/api/webhooks/1427683772832153793/BQQMnNfebN_yR0ALc-b890QV0ej0LdYsAMUbtAAOr6AbMaWS7nZ_B8z2V-QGxlK-WVPZ";
+// APRÈS (Demande au système d'exploitation de donner la valeur de la variable)
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 const PORT = process.env.PORT || 3000;
 
 const app = express();
