@@ -1,0 +1,630 @@
+/* Fichier styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Ajouté pour s'assurer que tous les éléments héritent de la taille de police de base de 14px par défaut */
+    font-size: 14px;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #262626;
+    --border-color: #e6e6e6;
+    --input-bg: #fafafa;
+    --button-bg: #4150F7;
+    --button-active-bg: #4A5DF9;
+    --button-text: #ffffff;
+    --secondary-text: #999;
+    --link-color: #003569;
+    --separator-color: #efefef;
+    /* Couleurs pour l'input flottant */
+    --input-label-color: #a7a7a7; /* Couleur du texte par défaut/placeholder */
+    --input-border-focus: #b2b2b2;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #000000;
+        --text-color: #ffffff;
+        --border-color: #555555;
+        --input-bg: #121212;
+        --button-bg: #4150F7;
+        --button-active-bg: #4A5DF9;
+        --button-text: #ffffff;
+        --secondary-text: #a8a8a8;
+        --link-color: #708cfe;
+        --separator-color: #333333;
+        /* Couleurs pour l'input flottant en mode sombre */
+        --input-label-color: #a7a7a7; 
+        --input-border-focus: #555555; /* On utilise la couleur de la bordure par défaut du mode sombre pour le focus */
+    }
+    
+    #boximg-light {
+        display: none;
+    }
+    
+    #boximg-dark {
+        display: block;
+    }
+}
+
+body {
+    /* Taille de police principale */
+    font-size: 14px; 
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    padding: 0 2%;
+    gap: 5px; /* Réduit l'espace entre l'image et le formulaire */
+}
+
+/* Left Section - Image simple sans animation */
+.left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 450px;
+    margin-left: -55px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    max-width: 517.14 x 450;
+    object-fit: contain;
+}
+
+/* Right Section */
+.right {
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Box sans bordure */
+.box {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    align-items: center;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.theme-logo {
+    width: 175px;
+    margin-top: 65px;
+    opacity: 1 !important;
+}
+
+#boximg-light {
+    display: block;
+}
+
+#boximg-dark {
+    display: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 34.665px 0; 
+    /* La largeur de .form était de 330px. 330px - 2*34.665px = 260.67px. */
+    /* Pour que l'input fasse 270px, nous devons ajuster la largeur de .form ou son padding */
+    /* On va ajuster le padding pour que 270px + 2*padding_horizontal = 330px. Padding = 30px */
+    width: 330px; 
+}
+
+/* Début des règles pour les champs de formulaire (Input Flottant) */
+
+/* Conteneur pour l'input et le label - RETRAIT DE LA HAUTEUR FIXE POUR ROBUSTESSE */
+.input-field-container {
+    position: relative;
+    margin-bottom: 5px; 
+}
+
+/* 1. Règle .form input (CURSEUR EN BAS) */
+.form input.input { 
+    /* MODIFICATION : Hauteur 37.33px, Largeur 270px */
+    width: 270px !important;
+    height: 37.33px !important; 
+    padding: 18.665px 10px 4px 10px !important; /* Ajusté: 18.665px (top) + 4px (bottom) + 12px (font-size) = 34.665px. 37.33 - 2px (bordures) = 35.33. Pas parfait, mais le plus proche. */
+    
+    background-color: var(--input-bg);
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    /* width: 100%; - Remplacé par width: 270px !important; */
+    font-size: 12px;
+    outline: none;
+    opacity: 1;
+    z-index: 2;
+    caret-color: var(--text-color) !important; 
+    /* FIX SPÉCIFIQUE CHROME/IME : empêche le curseur IME point. */
+    ime-mode: inactive;
+}
+
+/* 2. Règle .input-field-container label (Alignement correspondant) */
+.input-field-container label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    /* MODIFICATION : Ajustement du padding pour centrer dans la nouvelle hauteur (37.33px) */
+    padding: 12px 10px 12px 10px; /* 37.33px - 12px (font-size) / 2 = 12.665px de padding vertical. */
+    /* On utilise 12px pour une meilleure cohérence visuelle. */
+    
+    color: var(--input-label-color); 
+    cursor: text;
+    pointer-events: none; 
+    transition: all 0.2s ease; 
+    transform-origin: top left;
+    font-size: 12px; 
+    /* Revert z-index à 1. Le label doit être derrière/en dessous de la bordure. */
+    z-index: 1; 
+    /* La largeur est basée sur la largeur de l'input */
+    width: calc(270px - 20px); 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 3. État 'flottant' du label (se déclenche au focus ou lorsque le champ est rempli) */
+.input-field-container input:focus + label,
+.input-field-container input:not(:placeholder-shown) + label {
+    /* Translation ajustée à -4px pour maintenir le label DANS l'input, près du haut (sous la bordure). */
+    transform: translateY(-4px) scale(0.7) translateX(2px); 
+    /* Suppression du background-color et du padding qui créaient l'effet de "découpe" de la bordure. */
+    font-size: 12px; 
+    line-height: 1; /* Reste à 1 pour la version réduite du label */
+    color: var(--secondary-text); 
+}
+/* Fin des règles pour les champs de formulaire */
+
+/* Les inputs ne doivent plus avoir de placeholder visible dans HTML, car le label le remplace */
+.form input::placeholder {
+    color: var(--input-label-color) !important; /* Utiliser la variable CSS */
+    opacity: 0; /* Rendre le placeholder invisible pour que le label prenne le dessus */
+}
+
+/* Focus sur l'input */
+.input:focus {
+    border: 1px solid var(--input-border-focus); /* Mettre en évidence la bordure au focus */
+}
+
+/* FIN DES NOUVEAUX STYLES POUR LE CHAMP FLOTTANT */
+
+button {
+    padding: 8px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 8px;
+    opacity: 0.7;
+    margin: 14px 0; 
+    font-weight: 500;
+    cursor: pointer;
+    width: 270px;
+    height: 37.33px;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+button.active {
+    opacity: 1;
+    background-color: var(--button-active-bg);
+}
+
+.forgot {
+    text-align: center;
+    margin: 12px 0;
+    width: 100%;
+}
+
+.forgot a {
+    text-decoration: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.or {
+    display: flex;
+    margin: 10px 0 12px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+}
+
+.sep {
+    height: 1px;
+    width: 105px;
+    background: var(--separator-color);
+}
+
+.or span {
+    color: var(--secondary-text);
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.facebook {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+.facebook p {
+    color: #0091f0;
+    margin: 0;
+    font-weight: 540;
+}
+
+.facebook img {
+    width: 20px;
+    height: 19.88px;
+}
+
+.second {
+    margin-top: 20px;
+    /* Aligné avec le padding du .form */
+    padding: 20px 34.665px; 
+    border: none;
+    text-align: center;
+}
+
+.second a {
+    color: var(--link-color); /* Utilisation de la variable pour l'accessibilité dark mode */
+    text-decoration: none;
+}
+
+.report-info {
+    font-size: 12px;
+    text-align: center;
+    color: var(--secondary-text);
+    /* Aligné avec le padding du .form */
+    margin: 10px 34.665px 20px; 
+    line-height: 1.4;
+}
+
+/* Footer Styles */
+.footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: var(--bg-color);
+    margin-top: auto;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.footer-links a {
+    color: var(--secondary-text);
+    text-decoration: none;
+    /* TAILLE DE BASE 12PX */
+    font-size: 12px; 
+    white-space: nowrap;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Bottom Styles */
+.footer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.footer-copyright {
+    color: var(--secondary-text);
+    white-space: nowrap;
+}
+
+/* Cible le <span> pour forcer la taille à 12px même après traduction */
+.footer-copyright span {
+    font-size: 12px !important;
+}
+
+/* Support pour les langues RTL (arabe, hébreu, etc.) */
+[dir="rtl"] .right {
+    text-align: right;
+}
+
+[dir="rtl"] .form {
+    text-align: right;
+}
+
+[dir="rtl"] .facebook {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .or {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .second p {
+    direction: rtl;
+}
+
+[dir="rtl"] .footer {
+    text-align: right;
+}
+
+[dir="rtl"] .footer-links {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer-bottom {
+    flex-direction: row-reverse;
+}
+
+/* RTL for floating label */
+[dir="rtl"] .input-field-container label {
+    left: auto;
+    right: 0;
+    transform-origin: top right;
+}
+
+/* 3. État 'flottant' du label RTL (se déclenche au focus ou lorsque le champ est rempli) */
+[dir="rtl"] .input-field-container input:focus + label,
+[dir="rtl"] .input-field-container input:not(:placeholder-shown) + label {
+    /* Translation ajustée à -4px pour maintenir le label DANS l'input, près du haut (sous la bordure). */
+    transform: translateY(-4px) scale(0.7) translateX(-2px); 
+}
+
+
+/* Responsive design */
+@media (max-width: 875px) {
+    .left {
+        display: none;
+    }
+    
+    .container {
+        justify-content: center;
+        gap: 0; /* Pas besoin d'espace sur mobile */
+    }
+    
+    .footer-links {
+        gap: 8px;
+        padding: 0 10px;
+    }
+    
+    /* Le lien du footer passe à 14px sur petit écran */
+    .footer-links a {
+        font-size: 14px;
+    }
+    
+    .footer-bottom {
+        gap: 15px;
+        /* Sur petit écran, le footer bottom passe en colonne, on doit ré-aligner les éléments */
+        flex-direction: column;
+    }
+
+    /* Le copyright passe aussi à 14px sur petit écran (Annule la règle !important de 12px) */
+    .footer-copyright span {
+        font-size: 14px !important;
+    }
+    
+    /* La taille de police du sélecteur de langue passe à 14px pour le petit écran (Annule la règle !important de 12px) */
+    #current-language span:first-child { 
+        font-size: 14px !important;
+    }
+    
+    .language-option {
+        /* Les options du dropdown peuvent rester à 14px pour la lisibilité sur mobile (héritage de base) */
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-links {
+        gap: 6px;
+    }
+    
+    .footer-links a {
+        font-size: 14px;
+    }
+    
+    .footer-bottom {
+        gap: 10px;
+        flex-direction: column;
+    }
+}
+
+.report-info a {
+    color: #708dff; 
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.report-info a:hover {
+    text-decoration: underline;
+}
+
+/* Language Selector Styles */
+.language-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.language-current {
+    color: var(--secondary-text);
+    cursor: pointer;
+    /* La taille est gérée par le span à l'intérieur */
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+/* Cible le texte de la langue par ID pour qu'il s'adapte au thème (retrait du !important blanc) */
+#current-language span:first-child {
+    font-size: 12px !important;
+    /* REMOVED: color: #ffffff !important; */
+}
+
+.language-current:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Début des styles pour le CHEVRON (MODIFIÉ) */
+.dropdown-arrow {
+    display: inline-block;
+    width: 0; 
+    height: 0; 
+    
+    /* NOUVEAU STYLE: Simple chevron en forme de 'V' */
+    border: solid var(--secondary-text); /* Couleur de la bordure du chevron */
+    border-width: 0 1.5px 1.5px 0; /* Épaisseur du trait, 0 haut/gauche, 1.5px bas/droite */
+    padding: 3px; /* Taille du 'V' */
+    
+    margin-left: 4px; /* Espacement après le texte */
+    transform: rotate(45deg); /* Rotation pour orienter le 'V' vers le bas */
+    transition: transform 0.2s;
+    
+    /* Règle importante pour s'assurer que le chevron ne soit pas affecté par font-size */
+    font-size: 0; 
+    line-height: 0;
+}
+
+.language-selector.active .dropdown-arrow {
+    /* Rotation pour pointer vers le haut (le 'V' pointant vers le haut) */
+    transform: rotate(-135deg); /* 45deg initial - 180deg */
+    /* Ajout d'une petite translation pour maintenir le centrage vertical lors de la rotation */
+    margin-top: -3px; 
+}
+/* Fin des styles pour le CHEVRON */
+
+
+/* Fichier styles.css */
+/* ... (autres styles) ... */
+
+.language-dropdown {
+    position: absolute;
+    /* Le positionnement ci-dessous place le menu déroulant au-dessus du sélecteur */
+    bottom: 100%; 
+    /* MODIFIÉ : Alignement à gauche pour que le début du menu corresponde au début du texte "English" */
+    left: 0; 
+    /* Couleurs fixes pour toujours avoir un fond blanc, quelle que soit le thème */
+    background-color: #ffffff; /* FORCÉ à Blanc */
+    border: 1px solid #e6e6e6; /* FORCÉ à la couleur de bordure du mode clair */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 130px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.language-selector.active .language-dropdown {
+    display: block;
+}
+
+/* Assurer la taille de 12px pour les options de langue */
+.language-option {
+    padding: 4px 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #262626; /* FORCÉ à la couleur de texte du mode clair */
+    border-bottom: 1px solid #efefef; /* FORCÉ à la couleur de séparateur du mode clair */
+    transition: background-color 0.2s;
+}
+
+.language-option:last-child {
+    border-bottom: none;
+}
+
+.language-option:hover {
+    /* Couleur de survol forcée pour fonctionner avec le texte noir sur fond blanc */
+    background-color: #f0f0f0;
+}
+
+/* RTL support for language selector */
+[dir="rtl"] .language-dropdown {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .language-current {
+    flex-direction: row-reverse;
+}
+
+/* Ajout d'une petite correction pour la direction RTL du chevron actif (pour maintenir la position) */
+[dir="rtl"] .language-selector.active .dropdown-arrow {
+    margin-top: -3px;
+}
+
+
+/* --- Barre de défilement personnalisée pour le menu sélecteur de langue (.language-dropdown) --- */
+
+/* Pour Firefox */
+.language-dropdown {
+    /* Curseur (thumb) en #9f9f9f, Piste (track) en #2c2c2c */
+    scrollbar-color: #9f9f9f #2c2c2c;
+    scrollbar-width: thin;
+}
+
+/* Pour Webkit (Chrome, Safari) */
+.language-dropdown::-webkit-scrollbar {
+    width: 8px; /* Largeur de la barre de défilement */
+}
+
+.language-dropdown::-webkit-scrollbar-track {
+    /* La piste (track) du défilement reste en couleur adaptative */
+    background: var(--input-bg); 
+    border-radius: 10px;
+}
+
+.language-dropdown::-webkit-scrollbar-thumb {
+    /* La couleur du curseur reste adaptative */
+    background-color: var(--secondary-text); 
+    border-radius: 10px;
+    min-height: 100px; 
+}

